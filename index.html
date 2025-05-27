@@ -1,0 +1,45 @@
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<script
+			defer
+			src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"
+		></script>
+		<script defer src="adding-inputs-script.js"></script>
+		<script defer src="script.js"></script>
+		<title>Document</title>
+	</head>
+	<body>
+		<main class="container">
+			<h1>Générer le Excel de rotation SWS</h1>
+			<form action="">
+				<div class="form-control">
+					<label for="">Planning(excel):</label>
+					<input type="file" name="" id="" />
+				</div>
+				<div class="form-control" id="sheets"></div>
+				<div class="form-control">
+					<label for="">Mois</label>
+					<select name="" id="monthSelector">
+						<option value="">--Veuillez choisir un mois --</option>
+						<option value="1">Janvier</option>
+						<option value="2">Février</option>
+						<option value="3">Mars</option>
+						<option value="4">Avril</option>
+						<option value="5">Mai</option>
+						<option value="6">Juin</option>
+						<option value="7">Juillet</option>
+						<option value="8">Août</option>
+						<option value="9">Septembre</option>
+						<option value="10">Octobre</option>
+						<option value="11">Novembre</option>
+						<option value="12">Décembre</option>
+					</select>
+				</div>
+				<button type="submit">Création du fichier</button>
+			</form>
+		</main>
+	</body>
+</html>
