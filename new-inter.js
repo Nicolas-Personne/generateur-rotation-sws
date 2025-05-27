@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		const firstname = document.querySelector("#firstname").value;
 		const email = document.querySelector("#email").value;
 		const data = {
-			[initial]: [lastname, firstname, email],
+			[initial.toUpperCase()]: [lastname, firstname, email],
 		};
 		let allData = JSON.parse(localStorage.getItem("inter"));
 		allData = {

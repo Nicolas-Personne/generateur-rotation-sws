@@ -88,7 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 	const getName = (initiales) => {
 		const key = initiales || "";
-		// console.log(key);
 
 		if (arrayIntervenants[key]) {
 			return {
