@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
 	let sheetToCheck = [];
 	let arrayOfJson = [];
-	const form = document.querySelector("form");
+	const form = document.querySelector("#form-generate");
 	const monthSelector = document.querySelector("#monthSelector");
 	const file = document.querySelector("input[type='file']");
 	const sheetsContainer = document.querySelector("#sheets");
+	const overlayLeft = document.querySelector(".overlay-left tbody");
 
 	file.addEventListener("change", (e) => {
 		const uploadedFile = file.files[0];
@@ -34,20 +35,57 @@ document.addEventListener("DOMContentLoaded", () => {
 		};
 		reader.readAsArrayBuffer(uploadedFile);
 	});
+	if (!localStorage.getItem("inter")) {
+		localStorage.setItem(
+			"inter",
+			JSON.stringify({
+				ACA: ["CAMARA", "Amadou", "amadou.camara@novei.fr"],
+				CMA: ["MAMES", "Christophe", "christophe.mames@novei.fr"],
+				CLE: ["LENTE", "Chloé", "chloe.lente@novei.fr"],
+				CPA: ["PAQUET", "Chloé", "chloe.paquet@novei.fr"],
+				FMA: ["MARTIN", "Florian", "florian.martin@novei.fr"],
+				NTR: ["TRETOUT", "Nicolas", "nicolas.tretout@novei.fr"],
+				NPE: ["PERSONNE", "Nicolas", "nicolas.personne@novei.fr"],
+				CMI: ["Chargé", "Missions", ""],
+				EKO: ["KOUMBA", "Edwin", "edwin.koumba@novei.fr"],
+				ATO: ["TOUTAIN", "Abigaëlle", "abigaelle.toutain@novei.fr"],
+			})
+		);
+	}
+	const arrayIntervenants = JSON.parse(localStorage.getItem("inter"));
 
-	const arrayIntervenants = {
-		ACA: ["CAMARA", "Amadou", "amadou.camara@novei.fr"],
-		CMA: ["MAMES", "Christophe", "christophe.mames@novei.fr"],
-		CLE: ["LENTE", "Chloé", "chloe.lente@novei.fr"],
-		CPA: ["PAQUET", "Chloé", "chloe.paquet@novei.fr"],
-		FMA: ["MARTIN", "Florian", "florian.martin@novei.fr"],
-		NTR: ["TRETOUT", "Nicolas", "nicolas.tretout@novei.fr"],
-		NPE: ["PERSONNE", "Nicolas", "nicolas.personne@novei.fr"],
-		CMI: ["Chargé", "Missions", ""],
-		EKO: ["KOUMBA", "Edwin", "edwin.koumba@novei.fr"],
-		ATO: ["TOUTAIN", "Abigaëlle", "abigaelle.toutain@novei.fr"],
-	};
+	for (const [key, value] of Object.entries(arrayIntervenants)) {
+		overlayLeft.innerHTML += `<tr class="inter-row" id="${
+			key + "-" + value[0]
+		}">
+								<td>${key}</td>
+								<td>${value[0]}</td>
+								<td>${value[1]}</td>
+								<td class="email-td">Caché(secret)<button class="delete-btn"><i class="fas fa-trash"></button></i></td>
+								</tr>`;
+	}
+	const interRow = document.querySelectorAll(".inter-row");
+	interRow.forEach((tr) => {
+		const button = tr.querySelector("button.delete-btn");
+		if (button) {
+			button.addEventListener("click", (e) => {
+				e.preventDefault();
 
+				const clickedRow = e.target.closest("tr");
+				if (!clickedRow) return;
+
+				// Récupère les initiales depuis le premier <td>
+				const initials = clickedRow.querySelector("td").textContent;
+
+				// Supprime l'entrée du localStorage
+				delete arrayIntervenants[initials];
+				localStorage.setItem("inter", JSON.stringify(arrayIntervenants));
+
+				// Supprime la ligne du tableau
+				clickedRow.remove();
+			});
+		}
+	});
 	const getName = (initiales) => {
 		const key = initiales || "";
 		// console.log(key);

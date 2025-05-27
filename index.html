@@ -2,19 +2,66 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+		/>
+
 		<link rel="stylesheet" href="style.css" />
 		<script
 			defer
 			src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"
 		></script>
-		<script defer src="adding-inputs-script.js"></script>
 		<script defer src="script.js"></script>
-		<title>Document</title>
+		<script defer src="new-inter.js"></script>
+		<title>Generateur Rotation SWS</title>
 	</head>
 	<body>
 		<main class="container">
-			<h1>Générer le Excel de rotation SWS</h1>
-			<form action="">
+			<div class="overlay-pop-up"></div>
+			<h1>Bienvenue sur votre générateur préféré d'Excel</h1>
+			<div class="overlay-left">
+				<table>
+					<caption>
+						<div>Liste des intervenants</div>
+						<small
+							>Les intervenants sont enregistrés sur votre navigateur</small
+						>
+					</caption>
+					<thead>
+						<th>Initials</th>
+						<th>Nom</th>
+						<th>Prénom</th>
+						<th>Email</th>
+					</thead>
+					<tbody></tbody>
+				</table>
+				<button id="show-form" class="btn btn-secondary">
+					Ajouter un intervenant
+				</button>
+			</div>
+			<form id="form-inter" action="">
+				<div class="close-icon">&times;</div>
+				<h3>Ajouter un intervenant</h3>
+				<div class="form-control">
+					<label for="initial">Initials</label>
+					<input type="text" name="initial" id="initial" />
+				</div>
+				<div class="form-control">
+					<label for="lastname">Nom</label>
+					<input type="text" name="lastname" id="lastname" />
+				</div>
+				<div class="form-control">
+					<label for="firstname">Prénom</label>
+					<input type="text" name="firstname" id="firstname" />
+				</div>
+				<div class="form-control">
+					<label for="email">Email</label>
+					<input type="email" name="email" id="email" />
+				</div>
+				<button type="submit" class="btn-primary">Ajouter +</button>
+			</form>
+			<form action="" id="form-generate">
 				<div class="form-control">
 					<label for="">Planning(excel):</label>
 					<input type="file" name="" id="" />
@@ -38,7 +85,7 @@
 						<option value="12">Décembre</option>
 					</select>
 				</div>
-				<button type="submit">Création du fichier</button>
+				<button type="submit" class="btn-primary">Création du fichier</button>
 			</form>
 		</main>
 	</body>

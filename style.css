@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 body {
 	box-sizing: border-box;
 	width: 100%;
@@ -6,6 +7,24 @@ body {
 	padding: 0;
 	background-color: #360c99;
 	color: #fff;
+	font-family: "Roboto", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 100;
+	font-style: normal;
+	font-variation-settings: "wdth" 100;
+}
+h1 {
+	font-weight: 500;
+}
+label,
+td {
+	font-weight: 400;
+	padding: 5px 0;
+}
+select,
+input {
+	padding: 5px;
+	border: none;
 }
 main.container {
 	display: flex;
@@ -28,7 +47,7 @@ form {
 	flex-direction: column;
 }
 
-form button {
+button.btn-primary {
 	border: 2px solid #360c99;
 	background-color: #fff;
 	color: #360c99;
@@ -37,7 +56,7 @@ form button {
 	width: 50%;
 	align-self: center;
 }
-form button:hover {
+button.btn-primary:hover {
 	border: 2px solid #fff;
 	background-color: #360c99;
 	color: #fff;
@@ -62,9 +81,99 @@ small {
 .form-control-child input {
 	flex: 1;
 }
-button.danger {
-	width: 10%;
+button.btn-secondary {
+	/* width: 10%; */
 	background-color: rgb(238, 32, 176);
+	border-color: rgb(238, 32, 176);
 	color: #fff;
 	padding: 10px;
+}
+button.btn-secondary:hover {
+	background-color: #fff;
+	/* border-color: #fff; */
+	color: rgb(238, 32, 176);
+}
+.overlay-left {
+	position: absolute;
+	left: 5px;
+	top: 10px;
+	background-color: rgba(0, 0, 0, 0.2);
+	padding: 10px;
+}
+table {
+	border-collapse: collapse;
+	margin: 10px 0;
+}
+td {
+	font-size: 0.8rem;
+	border: 1px solid #fff;
+	padding: 5px;
+}
+
+#form-inter {
+	display: none;
+	border: 2px solid #fff;
+	padding: 20px;
+	position: absolute;
+	z-index: 99;
+	background-color: #360c99;
+	/* width: 60%; */
+}
+
+.overlay-pop-up {
+	background-color: rgba(0, 0, 0, 0.5);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	display: none;
+	z-index: 50;
+	pointer-events: none;
+}
+
+.close-icon {
+	font-weight: 500;
+	position: absolute;
+	right: 10px;
+	top: 10px;
+	font-size: 1.5rem;
+	cursor: pointer;
+}
+
+.email-td {
+	position: relative;
+	/* width: 20%; */
+}
+td {
+	padding: 5px 10px;
+	overflow: hidden;
+}
+.delete-btn {
+	position: absolute;
+	background-color: rgb(238, 32, 176);
+	color: #fff;
+	/* padding: 10px 20px; */
+	border-radius: 5px 0 0 5px;
+	height: 100%;
+	width: 0%;
+	top: 0;
+	right: 0;
+	transition: all 0.3s ease-in-out;
+	visibility: hidden;
+	border: none;
+	cursor: pointer;
+}
+tr.inter-row i {
+	transition: all 0.3s ease-in-out;
+	visibility: hidden;
+	width: 0%;
+}
+.delete-btn:hover {
+	background-color: rgb(238, 32, 176);
+	color: #fff;
+	border: none;
+}
+tr.inter-row:hover .delete-btn,
+tr.inter-row:hover i {
+	width: 50%;
+	visibility: visible;
 }
